@@ -1,0 +1,143 @@
+{
+  "project_info": {
+    "project_number": "827355304971",
+    "firebase_url": "https://agriculture-project-c8a72.firebaseio.com",
+    "project_id": "agriculture-project-c8a72",
+    "storage_bucket": "agriculture-project-c8a72.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:827355304971:android:31eac63cd52a91d194a30e",
+        "android_client_info": {
+          "package_name": "com.akovasi.agricultureproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "827355304971-4ukafr3uid742qful85oe6nskst42fh8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9EiuMu8AEgjul4JrAKPl1i9UvtohWS1I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "827355304971-4ukafr3uid742qful85oe6nskst42fh8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:827355304971:android:ed935dbacf3246b2",
+        "android_client_info": {
+          "package_name": "com.example.kadir.agriculture_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "827355304971-jaqa9hvvd1hcqqjhhfqudfd4hbs5pu2q.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kadir.agriculture_project",
+            "certificate_hash": "d744091f3e91fb6dbb6a821a156977e5c8958bae"
+          }
+        },
+        {
+          "client_id": "827355304971-4ukafr3uid742qful85oe6nskst42fh8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9EiuMu8AEgjul4JrAKPl1i9UvtohWS1I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "827355304971-4ukafr3uid742qful85oe6nskst42fh8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:827355304971:android:02f406104002ffe2",
+        "android_client_info": {
+          "package_name": "com.example.kadir.agricultureprojectclientside"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "827355304971-4ukafr3uid742qful85oe6nskst42fh8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9EiuMu8AEgjul4JrAKPl1i9UvtohWS1I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "827355304971-4ukafr3uid742qful85oe6nskst42fh8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:827355304971:android:7176b9439c9e572e",
+        "android_client_info": {
+          "package_name": "com.example.kadir.agricultureprojectsupportside"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "827355304971-v23mec8762mr2i38s6p31rcugnja438i.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.kadir.agricultureprojectsupportside",
+            "certificate_hash": "d744091f3e91fb6dbb6a821a156977e5c8958bae"
+          }
+        },
+        {
+          "client_id": "827355304971-4ukafr3uid742qful85oe6nskst42fh8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9EiuMu8AEgjul4JrAKPl1i9UvtohWS1I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "827355304971-4ukafr3uid742qful85oe6nskst42fh8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
