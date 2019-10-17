@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Agriculture Project Client Side</string>
+    <string name="app_name">Tarım Projesi</string>
     <string name="login">Giriş Yap</string>
     <string name="createAccount">Hesap Oluştur</string>
 
@@ -27,5 +27,8 @@
     <string name="show_modules">Modüller</string>
     <string name="place_holder">PLACE_HOLDER</string>
     <string name="show_fixes">Müdahale Et</string>
+    <string name="simulation">Simülasyon</string>
+    <string name="farmTrack">Tarla Takip</string>
+    <string name="tarlahane">Tarlahane</string>
 
 </resources>

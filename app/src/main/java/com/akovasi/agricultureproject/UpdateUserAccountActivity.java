@@ -57,7 +57,6 @@ public class UpdateUserAccountActivity extends AppCompatActivity {
         cancel_button.setEnabled(false);
         confirm_button.setEnabled(false);
 
-
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference("User").child(FirebaseAuth.getInstance().getUid()).child("profile");
 
         ref.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -126,7 +125,7 @@ public class UpdateUserAccountActivity extends AppCompatActivity {
             public void onClick(View v) {
                 cancel_button.setEnabled(false);
                 confirm_button.setEnabled(false);
-                Intent intent = new Intent(UpdateUserAccountActivity.this, UserPageActivity.class);
+                Intent intent = new Intent(UpdateUserAccountActivity.this, UserPageFragment.class);
                 startActivity(intent);
                 finish();
             }
@@ -136,7 +135,7 @@ public class UpdateUserAccountActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(UpdateUserAccountActivity.this, UserPageActivity.class);
+        Intent intent = new Intent(UpdateUserAccountActivity.this, UserPageFragment.class);
         startActivity(intent);
         finish();
     }

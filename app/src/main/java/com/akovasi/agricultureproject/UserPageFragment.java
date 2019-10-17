@@ -4,8 +4,12 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -17,7 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class UserPageActivity extends AppCompatActivity {
+public class UserPageFragment extends Fragment {
 
     private TextView currentUserIdText;
     private TextView currentUserNameText;
@@ -40,6 +44,7 @@ public class UserPageActivity extends AppCompatActivity {
 
     public void initializeScreen() {
 
+        Log.v("Aloooo1", "asdadasdasd");
         ValueEventListener postListener = new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -54,40 +59,52 @@ public class UserPageActivity extends AppCompatActivity {
                 buttonSignOut.setEnabled(true);
                 imageAsset.setEnabled(true);
                 editUserButton.setEnabled(true);
+                Log.v("ALOOOOOOO2 ", dataSnapshot.child(uid).child("profile").child("userName").getValue().toString());
+
+
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-
             }
         };
+        Log.v("POSTLISTENER ", postListener.toString());
         myRef.addValueEventListener(postListener);
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_page);
-        progressBar = (ProgressBar) findViewById(R.id.progress_bar_userpage);
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        while (uid == null) {
+            Log.v("asdasd", "asdasd");
+        }
+        this.initializeScreen();
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View v = inflater.inflate(R.layout.fragment_user_page, null);
+
+//        getActivity().setContentView(R.layout.fragment_user_page);
+        progressBar = (ProgressBar) v.findViewById(R.id.progress_bar_userpage);
         uid = FirebaseHelper.getmFirebaseAuth().getUid();
-        currentUserIdText = (TextView) findViewById(R.id.uidField);
-        currentUserNameText = (TextView) findViewById(R.id.fullNameField);
-        currentUserEmailText = (TextView) findViewById(R.id.mailField);
-        currentUserPhoneText = (TextView) findViewById(R.id.phoneField);
-        currentUserAddressText = (TextView) findViewById(R.id.adresField);
-        editUserButton = (Button) findViewById(R.id.buttonEditUser);
-        buttonSignOut = (Button) findViewById(R.id.buttonSignOut);
-        imageAsset = (ImageView) findViewById(R.id.edit_info_button);
-        editDialog = new Dialog(UserPageActivity.this);
+        currentUserIdText = (TextView) v.findViewById(R.id.uidField);
+        currentUserNameText = (TextView) v.findViewById(R.id.fullNameField);
+        currentUserEmailText = (TextView) v.findViewById(R.id.mailField);
+        currentUserPhoneText = (TextView) v.findViewById(R.id.phoneField);
+        currentUserAddressText = (TextView) v.findViewById(R.id.adresField);
+        editUserButton = (Button) v.findViewById(R.id.buttonEditUser);
+        buttonSignOut = (Button) v.findViewById(R.id.buttonSignOut);
+        imageAsset = (ImageView) v.findViewById(R.id.edit_info_button);
+        editDialog = new Dialog(getActivity());
         editDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
 
 
         buttonSignOut.setEnabled(false);
         imageAsset.setEnabled(false);
         editUserButton.setEnabled(false);
-        while (uid == null) ;
-        this.initializeScreen();
-        //TODO: imageAsset.setEnable eklendi
+
+
         editUserButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -95,13 +112,13 @@ public class UserPageActivity extends AppCompatActivity {
                 editUserButton.setEnabled(false);
                 imageAsset.setEnabled(false);
                 progressBar.setVisibility(View.VISIBLE);
-                Intent intent = new Intent(UserPageActivity.this, EditUserActivity.class);
+                Intent intent = new Intent(getActivity(), EditUserActivity.class);
                 startActivity(intent);
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                UserPageActivity.this.finish();
+                getActivity().overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                getActivity().finish();
             }
         });
-        //TODO: imageAsset.setEnable eklendi
+
         buttonSignOut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,9 +127,10 @@ public class UserPageActivity extends AppCompatActivity {
                 imageAsset.setEnabled(false);
                 progressBar.setVisibility(View.VISIBLE);
                 FirebaseHelper.signOut();
-                Intent goLoginPage = new Intent(UserPageActivity.this, MainActivity.class);
+                Intent goLoginPage = new Intent(getActivity(), MainActivity.class);
+                getActivity().finish();
                 startActivity(goLoginPage);
-                finish();
+
             }
         });
 
@@ -130,9 +148,9 @@ public class UserPageActivity extends AppCompatActivity {
                         editUserButton.setEnabled(false);
                         buttonSignOut.setEnabled(false);
                         editDialog.dismiss();
-                        Intent intent = new Intent(UserPageActivity.this, UpdateUserProfileActivity.class);
+                        Intent intent = new Intent(getActivity(), UpdateUserProfileActivity.class);
                         startActivity(intent);
-                        finish();
+                        getActivity().finish();
                     }
                 });
                 editAccountButton.setOnClickListener(new View.OnClickListener() {
@@ -143,21 +161,28 @@ public class UserPageActivity extends AppCompatActivity {
                         editUserButton.setEnabled(false);
                         buttonSignOut.setEnabled(false);
                         editDialog.dismiss();
-                        Intent intent = new Intent(UserPageActivity.this, UpdateUserAccountActivity.class);
+                        Intent intent = new Intent(getActivity(), UpdateUserAccountActivity.class);
                         startActivity(intent);
-                        finish();
+                        getActivity().finish();
                     }
                 });
                 editDialog.show();
             }
         });
+
+        return v;
     }
 
 
+//    @Override
+//    public void onBackPressed() {
+//        editUserButton.setEnabled(true);
+//        buttonSignOut.setEnabled(true);
+//        super.onBackPressed();
+//    }
+
     @Override
-    public void onBackPressed() {
-        editUserButton.setEnabled(true);
-        buttonSignOut.setEnabled(true);
-        super.onBackPressed();
+    public String toString() {
+        return "Tarla Takip";
     }
 }

@@ -129,11 +129,13 @@ public class EditUserActivity extends AppCompatActivity implements SensorsOvervi
         super.onStart();
     }
 
+    boolean dont = false;
     @Override
     public void onBackPressed() {
+        if (dont) return;
 
         if (ft == null) {
-            Intent intent = new Intent(EditUserActivity.this, UserPageActivity.class);
+            Intent intent = new Intent(EditUserActivity.this, MainActivity.class);
             startActivity(intent);
             overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
             super.onBackPressed();
@@ -145,6 +147,7 @@ public class EditUserActivity extends AppCompatActivity implements SensorsOvervi
             finish();
 
         }
+        dont = true;
     }
 
     void initializeFarmImage(ArrayList<Farm> farmdata) {

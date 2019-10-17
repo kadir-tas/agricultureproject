@@ -93,7 +93,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
                     ref.child("userLastname").setValue(lname);
                     ref.child("userAddress").setValue(addr);
                     ref.child("userPhone").setValue(phone);
-                    Intent intent = new Intent(UpdateUserProfileActivity.this, UserPageActivity.class);
+                    Intent intent = new Intent(UpdateUserProfileActivity.this, UserPageFragment.class);
                     startActivity(intent);
                     finish();
                 }
@@ -107,7 +107,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
             public void onClick(View v) {
                 cancel_button.setEnabled(false);
                 confirm_button.setEnabled(false);
-                Intent intent = new Intent(UpdateUserProfileActivity.this, UserPageActivity.class);
+                Intent intent = new Intent(UpdateUserProfileActivity.this, UserPageFragment.class);
                 startActivity(intent);
                 finish();
             }
@@ -118,7 +118,7 @@ public class UpdateUserProfileActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(UpdateUserProfileActivity.this, UserPageActivity.class);
+        Intent intent = new Intent(UpdateUserProfileActivity.this, UserPageFragment.class);
         startActivity(intent);
         finish();
     }

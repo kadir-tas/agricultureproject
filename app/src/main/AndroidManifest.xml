@@ -22,14 +22,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".UserPageActivity" />
         <activity
             android:name=".EditUserActivity"
             android:label="@string/title_activity_edit_user"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".UpdateUserProfileActivity" />
-        <activity android:name=".UpdateUserAccountActivity"></activity>
-        <activity android:name=".FarmViewActivity"></activity>
+        <activity android:name=".UpdateUserAccountActivity" />
+        <activity android:name=".FarmViewActivity" />
     </application>
 
 </manifest>

@@ -62,7 +62,7 @@ public class FirebaseHelper {
     public void checkUserLogin(final Context context) {
         mFirebaseAuth = this.getmFirebaseAuth();
         if (mFirebaseAuth.getCurrentUser() != null) {
-            Intent userIntent = new Intent(context, UserPageActivity.class);
+            Intent userIntent = new Intent(context, UserPageFragment.class);
             userIntent.putExtra("Id", prev_user_id);
             context.startActivity(userIntent);
         }
@@ -76,7 +76,7 @@ public class FirebaseHelper {
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser user = firebaseAuth.getCurrentUser();
                 if (user != null) {
-                    Intent userIntent = new Intent(context, UserPageActivity.class);
+                    Intent userIntent = new Intent(context, UserPageFragment.class);
                     context.startActivity(userIntent);
                 } else {
 //                    Intent loginIntent = new Intent(context, LoginPageActivity.class); ///finish(); ekleyip dene..
@@ -109,10 +109,10 @@ public class FirebaseHelper {
                                     if (dataSnapshot.hasChild(mFirebaseAuth.getUid())) {
                                         if (callback != null)
                                             callback.onCorrectUserCallback();
-                                        Intent intent = new Intent(context, UserPageActivity.class);
+                                        Intent intent = new Intent(context, MainActivity.class);
                                         intent.putExtra("Id", mFirebaseAuth.getUid());
-                                        context.startActivity(intent);
                                         ((Activity) context).finish();
+                                        context.startActivity(intent);
                                     } else {
                                         if (callback != null)
                                             callback.onWrongUserCallback();

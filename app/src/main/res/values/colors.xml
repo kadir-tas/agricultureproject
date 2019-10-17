@@ -11,6 +11,7 @@
     <color name="colorUserInfoText">#C1BE95</color>
     <color name="colorUserInfo">#D4D2B5</color>
     <color name="colorGray">#3E3C49</color>
+    <color name="colorWhite">#FFFFFF</color>
 
 
     <color name="show_product_color">#463c86</color>

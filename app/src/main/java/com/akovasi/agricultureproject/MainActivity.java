@@ -3,11 +3,15 @@ package com.akovasi.agricultureproject;
 import android.app.Dialog;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+
+import com.akovasi.agricultureproject.Adapter.FragPagerAdapter;
+import com.google.firebase.auth.FirebaseAuth;
 
 import java.io.IOException;
 
@@ -16,6 +20,7 @@ public class MainActivity extends AppCompatActivity implements LoginPageFragment
     FirebaseHelper firebaseHelper;
     Dialog dialogNoConn;
     Button button;
+    FirebaseAuth firebaseAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +40,21 @@ public class MainActivity extends AppCompatActivity implements LoginPageFragment
                 ft.setTransition(1);
                 ft.commit();
             } else {
-                Log.v("ASD", firebaseHelper.getFirebaseUserAuthID());
-                firebaseHelper.checkUserLogin(MainActivity.this);
-                this.finish();
+                ViewPager vp = (ViewPager) findViewById(R.id.mViewPager_ID);
+                this.addPages(vp);
+
+                TabLayout tabLayout = (TabLayout) findViewById(R.id.mTab_ID);
+                tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+                tabLayout.setupWithViewPager(vp);
+                tabLayout.addOnTabSelectedListener(listener(vp));
+//                firebaseAuth = FirebaseHelper.getmFirebaseAuth();
+//                if(firebaseAuth.getCurrentUser() != null){
+//                    FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+//                    ft.replace(R.id.container, new UserPageFragment());
+//                    ft.addToBackStack(null);
+//                    ft.setTransition(1);
+//                    ft.commit();
+//                }
             }
         } else {
 
@@ -51,6 +68,33 @@ public class MainActivity extends AppCompatActivity implements LoginPageFragment
             });
 
         }
+    }
+
+    private void addPages(ViewPager pager) {
+        FragPagerAdapter adapter = new FragPagerAdapter(getSupportFragmentManager());
+        adapter.addPage(new Tarlahane());
+        adapter.addPage(new UserPageFragment());
+        adapter.addPage(new SimulationFragment());
+        pager.setAdapter(adapter);
+    }
+
+    private TabLayout.OnTabSelectedListener listener(final ViewPager pager) {
+        return new TabLayout.OnTabSelectedListener() {
+            @Override
+            public void onTabSelected(TabLayout.Tab tab) {
+                pager.setCurrentItem(tab.getPosition());
+            }
+
+            @Override
+            public void onTabUnselected(TabLayout.Tab tab) {
+
+            }
+
+            @Override
+            public void onTabReselected(TabLayout.Tab tab) {
+
+            }
+        };
     }
 
     @Override
